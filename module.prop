@@ -1,0 +1,7 @@
+id=Ad-Blocker
+name=Adblock for ksu and Magisk
+version=v1.0
+versionCode=1
+author=Vaz15k
+description=Based on Adaway hosts
+updateJson=
