@@ -4,4 +4,4 @@ version=v1.0
 versionCode=1
 author=Vaz15k
 description=Based on Adaway hosts
-updateJson=
+updateJson=https://raw.githubusercontent.com/Vaz15k/Systemless-Ad-Blocker/master/update.json
