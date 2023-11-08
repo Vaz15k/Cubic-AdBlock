@@ -1,3 +1,6 @@
+## v1.2 - 23-11-08
+	* Update hosts file
+
 ## v1.1 - 23-10-24
 	* Update hosts file
 
