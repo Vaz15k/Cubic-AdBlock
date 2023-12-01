@@ -37,6 +37,7 @@ REPLACE_EXAMPLE="
 # Construct your own list here
 REPLACE="
 /system/etc/hosts
+/system/etc/hosts.tmp
 "
 
 ##########################################################################################
@@ -44,9 +45,8 @@ REPLACE="
 ##########################################################################################
 
 set_permissions() {
+  set_perm_recursive $MODPATH/system/etc/hosts 0 0 0644 0755
   :
-
-  set_perm-recursive $MODPATH/system/etc/host 0 0 0644 0755
   
   # Remove this if adding to this function
 

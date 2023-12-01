@@ -1,3 +1,7 @@
+## v1.5 - 23-11-20
+	* Update hosts file
+	* Fixed problem with not blocking ads
+
 ## v1.4 - 23-11-28
 	* Updated Hosts file with UHB (The Ultimate Hosts Blacklist)
 	
