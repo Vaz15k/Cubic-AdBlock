@@ -1,3 +1,7 @@
+## v1.6 - 24-01-06
+	* Update Hosts File
+	* Switching to Steven Black's list, for making the file lighter and I believe it's more than enough for everyone
+
 ## v1.5 - 23-11-20
 	* Update hosts file
 	* Fixed problem with not blocking ads

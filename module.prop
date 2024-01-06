@@ -1,7 +1,7 @@
 id=Ad-Blocker
 name=Adblock for ksu and Magisk
-version=v1.5
-versionCode=6
+version=v1.6
+versionCode=7
 author=Vaz15k
 description=Hosts file-based Ad-Blocker
 updateJson=https://raw.githubusercontent.com/Vaz15k/Systemless-Ad-Blocker/master/update.json

@@ -1,4 +1,4 @@
 Hosts List:
 
-The Ultimate Hosts Blacklist
-https://github.com/Ultimate-Hosts-Blacklist/Ultimate.Hosts.Blacklist
+StevenBlack Hosts 
+https://github.com/StevenBlack/hosts?tab=readme-ov-file
