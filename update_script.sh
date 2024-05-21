@@ -90,8 +90,8 @@ criar_zip() {
 	fi
 }
 
-#update_hosts
+update_hosts
 update_prop
 update_json
 update_changelog
-#criar_zip
+criar_zip
