@@ -1,0 +1,72 @@
+name: Update Hosts File
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 12 * * *"
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      
+      - name: Set up Python 3
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install System dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y zip jq
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install requests
+
+      - name: Update Hosts File
+        run: |
+          bash update_script.sh
+
+      - name: Update current version
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+          git pull origin
+          git add .
+          git commit -m "Update version: ${{ env.MODULE_VERSION }}"
+          git tag "${{ env.MODULE_VERSION }}"
+
+      - name: Push changes to repo
+        uses: ad-m/github-push-action@master
+        with:
+          tags: true
+          github_token: ${{ secrets.TOKEN }}
+
+      - name: Publish on GitHub
+        id: release
+        uses: softprops/action-gh-release@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        with:
+          files: /home/runner/work/Systemless-AdBlock/Systemless-AdBlock.zip
+          name: Systemless AdBlock - ${{ env.MODULE_VERSION }}
+          tag_name: ${{ env.MODULE_VERSION }}
+          body: |
+            ### **Release Notes - ${{ env.MODULE_VERSION }}**
+
+            - Update Hosts File
+
+            ### **Based Hosts List**
+            
+            - [Steven Black](https://github.com/StevenBlack/hosts)
+            - [NoTrack Tracker Blocklist](https://gitlab.com/quidsup/notrack-blocklists)
+            - [GoodBye Ads](https://github.com/jerryn70/GoodbyeAds)
+            - [Peter Lowe](https://pgl.yoyo.org/adservers/)
+            - [1Hosts](https://o0.pages.dev)
+            - [HaGeZi](https://github.com/hagezi/dns-blocklists)
