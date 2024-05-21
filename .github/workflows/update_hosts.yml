@@ -54,7 +54,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
-          files: /home/runner/work/Systemless-AdBlock/Systemless-AdBlock.zip
+          files: /home/runner/work/Systemless-AdBlocker/Systemless-AdBlocker/Systemless-AdBlock.zip
           name: Systemless AdBlock - ${{ env.MODULE_VERSION }}
           tag_name: ${{ env.MODULE_VERSION }}
           body: |
