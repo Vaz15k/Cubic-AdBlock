@@ -10,9 +10,12 @@ criar_zip() {
 	if [ -f Systemless-AdBlock.zip ]; then
 		echo "Removendo arquivo antigo"
 		rm Systemless-AdBlock.zip
-		zip -r9 Systemless-AdBlock.zip module/*
+		cd module
+		zip -r9 ../Systemless-AdBlock.zip *
+		
 	else
-		zip -r9 Systemless-AdBlock.zip module/*
+		cd module
+		zip -r9 ../Systemless-AdBlock.zip *
 	fi
 }
 
