@@ -1,3 +1,2 @@
-## 2.0 - 24-05-21
-	* Module rework
+## 2.01 - 21-05-24
 	* Update Hosts Lists
