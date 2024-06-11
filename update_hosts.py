@@ -54,25 +54,32 @@ host_lists = [
 
 # Lista de endereços a serem removidos
 blocked_addresses = [
+    # AliExpress
     "alicdn.com",
+    # Adobe
+    "sstats.adobe.com",
+    # NordVPN
+    "launches.appsflyer.com",
+    # Amazon
+    "amazon-adsystem.com",
+    "aan.amazon.com",
+    "api.us-east-1.aiv-delivery.net",
     # Microsoft
     "live.com",
     "microsoft.com",
     "microsoftonline.com",
     # Allow Facebook login
-    "facebook.com",
+    "edge.mqtt.facebook.com"
+    "graph.facebook.com",
     # Streaming
     "tidal.com",
     "spotify.com",
-    # Allows loading of news pages in some games
-    "07c225f3.online",
+    # News pages in some games (Brawl Start, Clash of Clans...)
     "sentry.io",
     # Google
     "googleapis.com",
     "googleadservices.com",
-    "ads.youtube.com",
     "s.youtube.com",
-    "youtube.com",
     # Samsung Apps
     "samsungrs.com",
     "samsungosp.com",
