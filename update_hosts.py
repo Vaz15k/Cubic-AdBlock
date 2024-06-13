@@ -1,16 +1,16 @@
 import requests
 from datetime import datetime
 
-# Função para baixar conteúdo de uma URL
+# Function to download content from a URL
 def download_hosts(url):
     try:
         response = requests.get(url)
         return response.text
     except Exception as e:
-        print(f"Erro ao baixar hosts de {url}: {str(e)}")
+        print(f"Error downloading hosts from {url}: {str(e)}")
         return None
 
-# Função para remover linhas duplicadas do arquivo hosts
+# Function to remove duplicate lines from the hosts file
 def remove_duplicate_lines(hosts_content):
     lines_seen = set()
     cleaned_hosts = ""
@@ -20,7 +20,7 @@ def remove_duplicate_lines(hosts_content):
             lines_seen.add(line)
     return cleaned_hosts
 
-# Função para remover linhas com comentários do arquivo hosts
+# Function to remove commented lines from the hosts file
 def remove_commented_lines(hosts_content):
     cleaned_hosts = ""
     for line in hosts_content.split("\n"):
@@ -28,7 +28,7 @@ def remove_commented_lines(hosts_content):
             cleaned_hosts += line + "\n"
     return cleaned_hosts
 
-# Função para remover linhas com determinados endereços do arquivo hosts
+# Function to remove lines with specific addresses from the hosts file
 def remove_blocked_hosts(hosts_content, blocked_hosts):
     hosts = ""
     for line in hosts_content.split("\n"):
@@ -37,11 +37,11 @@ def remove_blocked_hosts(hosts_content, blocked_hosts):
             hosts += line + "\n"
     return hosts
 
-# Função para adicionar um cabeçalho personalizado ao arquivo hosts
+# Function to add a custom header to the hosts file
 def add_header(hosts_content, header):
     return header + "\n" + hosts_content
 
-# Lista de URLs das listas de hosts
+# List of URLs for the host lists
 host_lists = [
     "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts",
     "https://gitlab.com/quidsup/notrack-blocklists/-/raw/master/malware.hosts?ref_type=heads",
@@ -52,7 +52,7 @@ host_lists = [
     "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/hosts/ultimate.txt"
 ]
 
-# Lista de endereços a serem removidos
+# List of addresses to be removed
 blocked_addresses = [
     # AliExpress
     "alicdn.com",
@@ -69,7 +69,7 @@ blocked_addresses = [
     "microsoft.com",
     "microsoftonline.com",
     # Allow Facebook login
-    "edge.mqtt.facebook.com"
+    "edge.mqtt.facebook.com",
     "graph.facebook.com",
     # Streaming
     "tidal.com",
@@ -91,10 +91,10 @@ blocked_addresses = [
     "whatsapp.net"
 ]
 
-# Obter a data atual
+# Get the current date
 current_date = datetime.now().strftime("%Y-%m-%d")
 
-# Cabeçalho personalizado
+# Custom header
 header = f"""
 ######################################################################
 #          ____            _                 _                       #
@@ -117,27 +117,27 @@ header = f"""
 ######################################################################
 """
 
-# Baixar e concatenar os hosts das listas
+# Download and concatenate the hosts from the lists
 hosts_content = ""
 for url in host_lists:
     content = download_hosts(url)
     if content:
         hosts_content += content + "\n"
 
-# Remover linhas duplicadas
+# Remove duplicate lines
 cleaned_hosts = remove_duplicate_lines(hosts_content)
 
-# Remover linhas com comentários
+# Remove commented lines
 cleaned_hosts = remove_commented_lines(cleaned_hosts)
 
-# Remover hosts bloqueados
+# Remove blocked hosts
 hosts = remove_blocked_hosts(cleaned_hosts, blocked_addresses)
 
-# Adicionar cabeçalho personalizado
+# Add custom header
 hosts_with_header = add_header(hosts, header)
 
-# Escrever o arquivo atualizado
+# Write the updated file
 with open("module/system/etc/hosts", "w") as file:
     file.write(hosts_with_header)
 
-print("Arquivo 'hosts' gerado com sucesso!")
+print("Hosts file generated successfully!")
