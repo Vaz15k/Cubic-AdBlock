@@ -41,6 +41,10 @@ def remove_blocked_hosts(hosts_content, blocked_hosts):
 def add_header(hosts_content, header):
     return header + "\n" + hosts_content
 
+# Function to add new lines to the end of the hosts file
+def add_new_lines(hosts_content, new_lines):
+    return hosts_content + "\n" + "\n".join(new_lines) + "\n"
+
 # List of URLs for the host lists
 host_lists = [
     "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts",
@@ -117,6 +121,13 @@ header = f"""
 ######################################################################
 """
 
+# New lines to add to the end of the hosts file
+# Exemple: 0.0.0.0 ads.google.com
+# I don't think it's necessary, since hosts don't cover almost everything
+new_lines = [
+    "# The lines below are added directly to the module"
+]
+
 # Download and concatenate the hosts from the lists
 hosts_content = ""
 for url in host_lists:
@@ -136,8 +147,11 @@ hosts = remove_blocked_hosts(cleaned_hosts, blocked_addresses)
 # Add custom header
 hosts_with_header = add_header(hosts, header)
 
+# Add new lines
+hosts_with_new_lines = add_new_lines(hosts_with_header, new_lines)
+
 # Write the updated file
 with open("module/system/etc/hosts", "w") as file:
-    file.write(hosts_with_header)
+    file.write(hosts_with_new_lines)
 
 print("Hosts file generated successfully!")
