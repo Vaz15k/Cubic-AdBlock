@@ -20,7 +20,7 @@ To use this list in AdAway, add the following URL to the in-app repository list:
 https://raw.githubusercontent.com/Vaz15k/Systemless-AdBlocker/master/module/system/etc/hosts
 ```
 - For Magisk users: enable the "Systemless hosts" module in the settings.
-- For APatch or KernelSU users: use the Systemless hosts KSU module.
+- For APatch or KernelSU users: use the [Systemless Hosts KSU](https://github.com/symbuzzer/systemless-hosts-KernelSU-module) module.
 
 ## Credits
 Special thanks to the following lists for their contributions:
