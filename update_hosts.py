@@ -43,7 +43,7 @@ def add_header(hosts_content, header):
 
 # Function to add new lines to the end of the hosts file
 def add_new_lines(hosts_content, new_lines):
-    return hosts_content + "\n" + "\n".join(new_lines) + "\n"
+    return hosts_content + "\n".join(new_lines)
 
 # List of URLs for the host lists
 host_lists = [
@@ -125,8 +125,11 @@ header = f"""
 # Exemple: 0.0.0.0 ads.google.com
 # I don't think it's necessary, since hosts don't cover almost everything
 new_lines = [
-    "# The lines below are added directly to the module"
-]
+"""
+# The lines below are added directly to the module
+
+0.0.0.0 tigr1234566.github.io
+"""]
 
 # Download and concatenate the hosts from the lists
 hosts_content = ""
