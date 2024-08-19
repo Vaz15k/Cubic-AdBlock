@@ -1,7 +1,7 @@
 id=systemless-adblock
 name=Systemless-AdBlock
-version=v2.14
-versionCode=2014
+version=v2.15
+versionCode=2015
 author=Vaz15k
 description=A simple AdBlocker based on the hosts file.
 updateJson=https://raw.githubusercontent.com/Vaz15k/Systemless-AdBlocker/master/module/update.json
