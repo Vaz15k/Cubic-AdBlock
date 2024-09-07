@@ -95,16 +95,16 @@ update_changelog() {
 create_zip() {
 	# Creating the module zip file
 	echo "Creating module zip file"
-	if [ -f Systemless-AdBlock.zip ]; then
+	if [ -f Cubic-AdBlock.zip ]; then
 		# Removing the old zip file if it exists
 		echo "Removing old zip file"
-		rm Systemless-AdBlock.zip
+		rm Cubic-AdBlock.zip
 		cd module
-		zip -r9 ../Systemless-AdBlock.zip *
+		zip -r9 ../Cubic-AdBlock.zip *
 	else
 		# Creating a new zip file
 		cd module
-		zip -r9 ../Systemless-AdBlock.zip *
+		zip -r9 ../Cubic-AdBlock.zip *
 	fi
 }
 
