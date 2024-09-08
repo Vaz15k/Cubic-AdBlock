@@ -1,0 +1,13 @@
+{
+	"license": "MIT",
+	"support": "https://github.com/Vaz15k/Cubic-AdBlock/issues",
+	"donate": "",
+	"cover": "",
+	"icon": "https://raw.githubusercontent.com/Vaz15k/Cubic-AdBlock/cubic/docs/cubic_logo.png",
+	"categories": [
+		"Adblocking and Hosts Files"
+	],
+	"require": [],
+	"screenshots": [],
+	"readme": "https://raw.githubusercontent.com/Vaz15k/Cubic-AdBlock/cubic/docs/README.md"
+}
