@@ -62,9 +62,7 @@ blocked_addresses = [
     "alicdn.com",
     # Adobe
     "sstats.adobe.com",
-    # NordVPN
-    "launches.appsflyer.com",
-    # Amazon
+    # Amazon / Prime Video
     "amazon-adsystem.com",
     "aan.amazon.com",
     "api.us-east-1.aiv-delivery.net",
@@ -72,25 +70,32 @@ blocked_addresses = [
     "live.com",
     "microsoft.com",
     "microsoftonline.com",
-    # Allow Facebook login
+    # Facebook login
     "edge.mqtt.facebook.com",
     "graph.facebook.com",
-    # Streaming
-    "tidal.com",
-    "spotify.com",
     # News pages in some games (Brawl Start, Clash of Clans...)
     "sentry.io",
     # Google
     "googleapis.com",
-    "googleadservices.com",
+    "googleadservices.com", # To avoid being blocked from clicking on things on Google Shopping
     "s.youtube.com",
+    # Groq AI
+    "web.stytch.com",
+    "groq.com",
+    # Instagram
+    "graph.instagram.com",
+    # NordVPN
+    "launches.appsflyer.com",
     # Samsung Apps
     "samsungrs.com",
     "samsungosp.com",
     "samsungcloud.com",
     "samsungapps.com",
     "samsung-gamelauncher.com",
-    # Allow Catalog in Whatsapp
+    # Streaming
+    "tidal.com",
+    "spotify.app.link",
+    # Whatsapp Catalog
     "whatsapp.com",
     "whatsapp.net"
 ]
@@ -129,6 +134,7 @@ new_lines = [
 # The lines below are added directly to the module
 
 0.0.0.0 tigr1234566.github.io
+0.0.0.0 graph.instagram.com.domain.name
 """]
 
 # Download and concatenate the hosts from the lists
