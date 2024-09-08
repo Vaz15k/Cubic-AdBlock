@@ -6,8 +6,10 @@
 </p>
 
 <p align="center">
-  <img alt="Status GitHub Actions" src="https://img.shields.io/github/actions/workflow/status/Vaz15K/Systemless-AdBlocker/update_hosts.yml">
-  <img alt="Downloads no GitHub" src="https://img.shields.io/github/downloads/Vaz15K/Systemless-AdBlocker/total">
+  <img alt="Versão Atual no GitHub" src="https://img.shields.io/github/v/release/Vaz15K/Cubic-AdBlock">
+  <img alt="Downloads do GitHub (todos os ativos, todos os lançamentos)" src="https://img.shields.io/github/downloads/Vaz15K/Cubic-AdBlock/total">
+  <img alt="Status do fluxo de trabalho do GitHub" src="https://img.shields.io/github/actions/workflow/status/Vaz15K/Cubic-AdBlock/update_hosts.yml">
+  <img alt="GitHub Licença" src="https://img.shields.io/github/license/Vaz15K/Cubic-AdBlock">
 </p>
 
 Um módulo simples de AdBlock baseado no arquivo hosts.
@@ -35,7 +37,7 @@ Recomendo usar o Adaway se você quiser permitir anúncios em um aplicativo espe
 
 Para usar essa lista no AdAway, adicione o seguinte URL à lista de repositórios no aplicativo:
 ```
-https://raw.githubusercontent.com/Vaz15k/Cubic-AdBlocker/master/module/system/etc/hosts
+https://raw.githubusercontent.com/Vaz15k/Cubic-AdBlocker/cubic/module/system/etc/hosts
 ```
 - Para usuários do Magisk: habilite o módulo "Systemless hosts" nas configurações.
 - Para usuários do APatch ou KernelSU: use o módulo [Systemless Hosts KSU](https://github.com/symbuzzer/systemless-hosts-KernelSU-module).
@@ -44,7 +46,7 @@ https://raw.githubusercontent.com/Vaz15k/Cubic-AdBlocker/master/module/system/et
 > Se quiser, você pode usar o Adaway no modo VPN, assim você não precisará de root.
 
 ## Créditos
-Agradecimentos especiais às seguintes listas por suas contribuições:
+Este módulo tem seus hosts baseados nas listas abaixo, **Agradecimentos Especiais** para:
 
 - [StevenBlack](https://github.com/StevenBlack/hosts)
 - [NoTrack Block Lists](https://gitlab.com/quidsup/notrack-blocklists)
