@@ -25,7 +25,7 @@ A simple AdBlock module based on the hosts file.
 Installing the module is very simple.
 
 1. **Download the [latest module](https://github.com/Vaz15k/Cubic-AdBlocker/releases)**
-> The module is also available on [**MMRL**](https://mmrl.dergoogler.com)
+> The module is also available on [**MMRL**](https://mmrl.dergoogler.com/?module=cubic-adblock)
 2. **Flash your preferred root manager**
 
 ## Using with Adaway

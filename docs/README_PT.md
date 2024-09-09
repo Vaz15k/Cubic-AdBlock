@@ -25,7 +25,7 @@ Um módulo simples de AdBlock baseado no arquivo hosts.
 Instalar o módulo é muito simples.
 
 1. **Baixe o [módulo mais recente](https://github.com/Vaz15k/Cubic-AdBlocker/releases)**
-> O módulo também está disponível no [**MMRL**](https://mmrl.dergoogler.com)
+> O módulo também está disponível no [**MMRL**](https://mmrl.dergoogler.com/?module=cubic-adblock)
 2. **Instale com seu gerenciador de root preferido**
 
 ## Usando com Adaway
