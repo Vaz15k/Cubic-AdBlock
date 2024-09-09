@@ -1,3 +1,2 @@
-## 2.18 - 07-09-24
-	* Welcome Cubic-AdBlock
+## 2.19 - 09-09-24
 	* Update Hosts Lists
