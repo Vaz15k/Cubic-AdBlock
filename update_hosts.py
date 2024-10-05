@@ -37,6 +37,15 @@ def remove_blocked_hosts(hosts_content, blocked_hosts):
             hosts += line + "\n"
     return hosts
 
+# Function to remove exact multiple hosts (The difference from the function above, remove exactly the link and not its variations)
+def remove_exact_hosts(hosts_content, exact_hosts):
+    cleaned_hosts = ""
+    for line in hosts_content.split("\n"):
+        parts = line.split()
+        if parts and len(parts) >= 2 and parts[1] not in exact_hosts:
+            cleaned_hosts += line + "\n"
+    return cleaned_hosts
+
 # Function to add a custom header to the hosts file
 def add_header(hosts_content, header):
     return header + "\n" + hosts_content
@@ -70,20 +79,14 @@ blocked_addresses = [
     "live.com",
     "microsoft.com",
     "microsoftonline.com",
-    # Facebook login
-    "edge.mqtt.facebook.com",
-    "graph.facebook.com",
     # News pages in some games (Brawl Start, Clash of Clans...)
     "sentry.io",
     # Google
     "googleapis.com",
     "googleadservices.com", # To avoid being blocked from clicking on things on Google Shopping
-    "s.youtube.com",
     # Groq AI
     "web.stytch.com",
     "groq.com",
-    # Instagram
-    "graph.instagram.com",
     # NordVPN
     "launches.appsflyer.com",
     # Samsung Apps
@@ -99,6 +102,28 @@ blocked_addresses = [
     "whatsapp.com",
     "whatsapp.net"
 ]
+
+# List of exact hosts to remove
+exact_hosts_to_remove = [
+    # For some sites, like OnlineGDB
+    "html-load.com",
+    # Google
+    "s.youtube.com",
+    # Meta
+    "edge.mqtt.facebook.com",
+    "graph.facebook.com",
+    "graph.instagram.com"
+]
+
+# New lines to add to the end of the hosts file
+# Exemple: 0.0.0.0 ads.google.com
+# I don't think it's necessary, since hosts don't cover almost everything
+new_lines = [
+"""
+# The lines below are added directly to the module
+
+0.0.0.0 tigr1234566.github.io
+"""]
 
 # Get the current date
 current_date = datetime.now().strftime("%Y-%m-%d")
@@ -126,17 +151,6 @@ header = f"""
 ######################################################################
 """
 
-# New lines to add to the end of the hosts file
-# Exemple: 0.0.0.0 ads.google.com
-# I don't think it's necessary, since hosts don't cover almost everything
-new_lines = [
-"""
-# The lines below are added directly to the module
-
-0.0.0.0 tigr1234566.github.io
-0.0.0.0 graph.instagram.com.domain.name
-"""]
-
 # Download and concatenate the hosts from the lists
 hosts_content = ""
 for url in host_lists:
@@ -152,6 +166,7 @@ cleaned_hosts = remove_commented_lines(cleaned_hosts)
 
 # Remove blocked hosts
 hosts = remove_blocked_hosts(cleaned_hosts, blocked_addresses)
+hosts = remove_exact_hosts(hosts, exact_hosts_to_remove)
 
 # Add custom header
 hosts_with_header = add_header(hosts, header)
