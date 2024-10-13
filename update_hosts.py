@@ -107,6 +107,8 @@ blocked_addresses = [
 exact_hosts_to_remove = [
     # For some sites, like OnlineGDB
     "html-load.com",
+    #Epic Games
+    "delivers.dtignite.com",
     # Google
     "s.youtube.com",
     # Meta
