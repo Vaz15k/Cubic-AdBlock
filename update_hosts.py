@@ -1,4 +1,5 @@
 import requests
+import re
 from datetime import datetime
 
 # Function to download content from a URL
@@ -31,18 +32,26 @@ def remove_commented_lines(hosts_content):
 # Function to remove lines with specific addresses from the hosts file
 def remove_blocked_hosts(hosts_content, blocked_hosts):
     hosts = ""
+    # Convert blocked_hosts patterns with '*' to regex patterns
+    regex_patterns = [re.compile(re.escape(blocked_host).replace(r'\*', '.*')) for blocked_host in blocked_hosts]
+    
     for line in hosts_content.split("\n"):
         parts = line.split()
-        if parts and len(parts) >= 2 and not any(blocked_host in parts[1] for blocked_host in blocked_hosts):
+        # Check if the line contains at least two parts and the second part matches any blocked pattern
+        if parts and len(parts) >= 2 and not any(pattern.search(parts[1]) for pattern in regex_patterns):
             hosts += line + "\n"
     return hosts
 
 # Function to remove exact multiple hosts (The difference from the function above, remove exactly the link and not its variations)
 def remove_exact_hosts(hosts_content, exact_hosts):
     cleaned_hosts = ""
+    # Convert exact_hosts patterns with '*' to regex patterns
+    regex_patterns = [re.compile(re.escape(exact_host).replace(r'\*', '.*')) for exact_host in exact_hosts]
+    
     for line in hosts_content.split("\n"):
         parts = line.split()
-        if parts and len(parts) >= 2 and parts[1] not in exact_hosts:
+        # Check if the line contains at least two parts and the second part matches exactly any pattern
+        if parts and len(parts) >= 2 and not any(pattern.fullmatch(parts[1]) for pattern in regex_patterns):
             cleaned_hosts += line + "\n"
     return cleaned_hosts
 
@@ -71,15 +80,33 @@ blocked_addresses = [
     "alicdn.com",
     # Adobe
     "sstats.adobe.com",
+    "assest.adobedtm.com",
+    # Adult Swim
+    "ad.auditude.com",
+    "bea4.v.fwmrm.net",
+    "geo.ngtv.io",
+    "sb.scorecardresearch.com",
+    "sstats.adultswim.com",
     # Amazon / Prime Video
     "amazon-adsystem.com",
     "aan.amazon.com",
     "api.us-east-1.aiv-delivery.net",
+    "device-metrics*.amazon.com",
+    # Discover
+    "api.mixpanel.com",
+    "api.radar.io",
+    "branch.io",
+    "datadoghq.com",
+    "discover.com",
+    "tt.omtrdc.net",
+    "report.dfs.glassboxdigital.io",
     # Microsoft
     "live.com",
     "microsoft.com",
     "microsoftonline.com",
-    # News pages in some games (Brawl Start, Clash of Clans...)
+    # Other "APIS"
+    "codepush.appcenter.ms",
+    "dpm.demdex.net",
     "sentry.io",
     # Google
     "googleapis.com",
@@ -114,7 +141,9 @@ exact_hosts_to_remove = [
     # Meta
     "edge.mqtt.facebook.com",
     "graph.facebook.com",
-    "graph.instagram.com"
+    "graph.instagram.com",
+    # Twitter / X
+    "t.co"
 ]
 
 # New lines to add to the end of the hosts file
