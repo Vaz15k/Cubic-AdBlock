@@ -100,6 +100,9 @@ blocked_addresses = [
     "discover.com",
     "tt.omtrdc.net",
     "report.dfs.glassboxdigital.io",
+    # Gupy
+    "email.gupy.com.br",
+    "email.inbound.gupy.com.br",
     # Microsoft
     "live.com",
     "microsoft.com",
@@ -154,6 +157,7 @@ new_lines = [
 # The lines below are added directly to the module
 
 0.0.0.0 tigr1234566.github.io
+0.0.0.0 serviceaonlineasiausaosiauuaaosmanagsoaisoas.es
 """]
 
 # Get the current date
