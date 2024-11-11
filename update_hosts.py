@@ -144,6 +144,9 @@ exact_hosts_to_remove = [
     # Meta
     "edge.mqtt.facebook.com",
     "graph.facebook.com",
+    "b-graph.facebook.com",
+    "mqtt-mini.facebook.com",
+    "web.facebook.com",
     "graph.instagram.com",
     # Twitter / X
     "t.co"
