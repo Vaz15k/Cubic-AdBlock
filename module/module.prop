@@ -1,7 +1,7 @@
 id=cubic-adblock
 name=Cubic-AdBlock
-version=v2.31
-versionCode=2031
+version=v2.32
+versionCode=2032
 author=Vaz15k
 description=A simple AdBlock based on the hosts file.
 updateJson=https://raw.githubusercontent.com/Vaz15k/Cubic-AdBlock/cubic/module/update.json
