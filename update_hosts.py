@@ -100,6 +100,8 @@ blocked_addresses = [
     "discover.com",
     "tt.omtrdc.net",
     "report.dfs.glassboxdigital.io",
+    # Epic Games
+    "eulatracking-public-service-prod.ol.epicgames.com",
     # Gupy
     "email.gupy.com.br",
     "email.inbound.gupy.com.br",
