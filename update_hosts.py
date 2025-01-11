@@ -42,19 +42,6 @@ def remove_blocked_hosts(hosts_content, blocked_hosts):
             hosts += line + "\n"
     return hosts
 
-# Function to remove exact multiple hosts (The difference from the function above, remove exactly the link and not its variations)
-def remove_exact_hosts(hosts_content, exact_hosts):
-    cleaned_hosts = ""
-    # Convert exact_hosts patterns with '*' to regex patterns
-    regex_patterns = [re.compile(re.escape(exact_host).replace(r'\*', '.*')) for exact_host in exact_hosts]
-    
-    for line in hosts_content.split("\n"):
-        parts = line.split()
-        # Check if the line contains at least two parts and the second part matches exactly any pattern
-        if parts and len(parts) >= 2 and not any(pattern.fullmatch(parts[1]) for pattern in regex_patterns):
-            cleaned_hosts += line + "\n"
-    return cleaned_hosts
-
 # Function to add a custom header to the hosts file
 def add_header(hosts_content, header):
     return header + "\n" + hosts_content
@@ -102,6 +89,7 @@ blocked_addresses = [
     "report.dfs.glassboxdigital.io",
     # Epic Games
     "eulatracking-public-service-prod.ol.epicgames.com",
+    "delivers.dtignite.com",
     # Gupy
     "email.gupy.com.br",
     "email.inbound.gupy.com.br",
@@ -115,10 +103,18 @@ blocked_addresses = [
     "sentry.io",
     # Google
     "googleapis.com",
-    "googleadservices.com", # To avoid being blocked from clicking on things on Google Shopping
+    "googleadservices.com",
+    "s.youtube.com",
     # Groq AI
     "web.stytch.com",
     "groq.com",
+    # Meta
+    "edge.mqtt.facebook.com",
+    "graph.facebook.com",
+    "b-graph.facebook.com",
+    "mqtt-mini.facebook.com",
+    "web.facebook.com",
+    "graph.instagram.com",
     # NordVPN
     "launches.appsflyer.com",
     # Samsung Apps
@@ -127,31 +123,18 @@ blocked_addresses = [
     "samsungcloud.com",
     "samsungapps.com",
     "samsung-gamelauncher.com",
+    # Supercell
+    "supercell.com",
     # Streaming
     "tidal.com",
     "spotify.app.link",
-    # Whatsapp Catalog
+    # Twitter / X
+    "t.co",
+    # Sites
+    "html-load.com",
+    # Whatsapp
     "whatsapp.com",
     "whatsapp.net"
-]
-
-# List of exact hosts to remove
-exact_hosts_to_remove = [
-    # For some sites, like OnlineGDB
-    "html-load.com",
-    #Epic Games
-    "delivers.dtignite.com",
-    # Google
-    "s.youtube.com",
-    # Meta
-    "edge.mqtt.facebook.com",
-    "graph.facebook.com",
-    "b-graph.facebook.com",
-    "mqtt-mini.facebook.com",
-    "web.facebook.com",
-    "graph.instagram.com",
-    # Twitter / X
-    "t.co"
 ]
 
 # New lines to add to the end of the hosts file
@@ -206,7 +189,6 @@ cleaned_hosts = remove_commented_lines(cleaned_hosts)
 
 # Remove blocked hosts
 hosts = remove_blocked_hosts(cleaned_hosts, blocked_addresses)
-hosts = remove_exact_hosts(hosts, exact_hosts_to_remove)
 
 # Add custom header
 hosts_with_header = add_header(hosts, header)
