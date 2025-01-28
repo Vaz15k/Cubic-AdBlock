@@ -117,6 +117,11 @@ blocked_addresses = [
     "graph.instagram.com",
     # NordVPN
     "launches.appsflyer.com",
+    # OnePlus
+    "com-service-us-04.allwnos.com",
+    "com-service-us-05.allwnos.com",
+    "com-service-us-07.allwnos.com",
+    "com-service-us-08.allwnos.com",
     # Samsung Apps
     "samsungrs.com",
     "samsungosp.com",
