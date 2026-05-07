@@ -8,12 +8,14 @@ import requests
 # Function to download content from a URL
 def download_hosts(url):
     try:
+        print(f"Downloading {url}...")
         response = requests.get(url, timeout=30)
         response.raise_for_status()
         return response.text
     except Exception as e:
         print(f"Error downloading {url}: {e}")
         return None
+
 
 # Function to download all hosts from the list of URLs concurrently
 def download_all_hosts(urls):
@@ -67,6 +69,22 @@ def remove_blocked_hosts(hosts_content, blocked_hosts):
     return "\n".join(result)
 
 
+def load_allowlists(urls):
+    allowed = set()
+    for url in urls:
+        try:
+            print(f"Loading allowlist from {url}...")
+            response = requests.get(url, timeout=30)
+            response.raise_for_status()
+            for line in response.text.split("\n"):
+                clean_line = line.split("#")[0].strip()
+                if clean_line:
+                    allowed.add(clean_line)
+        except Exception as e:
+            print(f"Error downloading allowlist {url}: {e}")
+    return allowed
+
+
 # Function to add a custom header to the hosts file
 def add_header(hosts_content, header):
     return header + "\n" + hosts_content
@@ -86,6 +104,10 @@ host_lists = [
     "https://pgl.yoyo.org/adservers/serverlist.php?showintro=0;hostformat=hosts",
     "https://raw.githubusercontent.com/badmojr/1Hosts/refs/heads/master/Lite/hosts.txt",
     "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/hosts/ultimate.txt",
+]
+
+host_allow_list = [
+    "https://raw.githubusercontent.com/hagezi/dns-blocklists/refs/heads/main/submit_pullrequest_here/allow_light-proplus.txt",
 ]
 
 # List of addresses to be allowed
@@ -214,8 +236,12 @@ cleaned_hosts = remove_duplicate_lines(hosts_content)
 # Remove commented lines
 cleaned_hosts = remove_commented_lines(cleaned_hosts)
 
-# Remove blocked hosts
+# Aplly custom allowlist
 hosts = remove_blocked_hosts(cleaned_hosts, allow_list)
+
+# Aplly allowlist from URL
+allowed_domains = load_allowlists(host_allow_list)
+hosts = remove_blocked_hosts(hosts, allowed_domains)
 
 # Add custom header
 hosts_with_header = add_header(hosts, header)
