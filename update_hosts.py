@@ -183,7 +183,7 @@ blocked_list = [
 current_date = datetime.now().strftime("%Y-%m-%d")
 
 # Custom header
-header = f"""
+header = rf"""
 ######################################################################
 #        ____      _     _                                           #
 #       / ___|   _| |__ (_) ___                                      #
