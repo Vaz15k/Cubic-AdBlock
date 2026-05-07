@@ -84,7 +84,7 @@ host_lists = [
     "https://gitlab.com/quidsup/notrack-blocklists/-/raw/master/trackers.hosts?ref_type=heads",
     "https://raw.githubusercontent.com/jerryn70/GoodbyeAds/master/Hosts/GoodbyeAds.txt",
     "https://pgl.yoyo.org/adservers/serverlist.php?showintro=0;hostformat=hosts",
-    "https://o0.pages.dev/Pro/hosts.txt",
+    "https://raw.githubusercontent.com/badmojr/1Hosts/refs/heads/master/Lite/hosts.txt",
     "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/hosts/ultimate.txt",
 ]
 
