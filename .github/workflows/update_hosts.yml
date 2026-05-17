@@ -35,11 +35,17 @@ jobs:
         run: |
           python update_hosts.py
 
-      - name: Update version
+      - name: Update version and changelog
         run: |
           python update_version.py
           VERSION=$(grep '^version=' module/module.prop | cut -d'=' -f2)
           echo "MODULE_VERSION=$VERSION" >> $GITHUB_ENV
+          CHANGELOG=$(cat CHANGELOG.md)
+          {
+            echo "CHANGELOG<<EOF"
+            echo "$CHANGELOG"
+            echo "EOF"
+          } >> $GITHUB_ENV
 
       - name: Create zip
         run: |
@@ -74,9 +80,7 @@ jobs:
           tag: ${{ env.MODULE_VERSION }}
           overwrite: true
           body: |
-            ### **Release Notes - ${{ env.MODULE_VERSION }}**
-
-            - Update Hosts File
+            ${{ env.CHANGELOG }}
 
             ### **Based Hosts List**
 

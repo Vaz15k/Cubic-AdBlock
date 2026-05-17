@@ -1,4 +1,5 @@
 import json
+from datetime import date
 
 
 def get_prop(path):
@@ -37,6 +38,19 @@ def save_json(path, data):
         json.dump(data, f, indent=2)
 
 
+def update_changelog(path, version, entries):
+    today = date.today().strftime("%d-%m-%y")
+    header = f"## {version} - {today}\n"
+    body = "\n".join(f"- {entry}" for entry in entries)
+    new_entry = f"{header}\n{body}\n"
+
+    with open(path, "r", encoding="utf-8") as f:
+        old_content = f.read()
+
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(new_entry + "\n" + old_content)
+
+
 props = get_prop("module/module.prop")
 print(f"before:  {props['version']} (code: {props['versionCode']})")
 
@@ -49,3 +63,5 @@ update = get_json("module/update.json")
 update["version"] = props["version"]
 update["versionCode"] = int(props["versionCode"])
 save_json("module/update.json", update)
+
+update_changelog("CHANGELOG.md", props["version"], ["Update Hosts"])
