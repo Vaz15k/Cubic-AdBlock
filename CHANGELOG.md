@@ -1,3 +1,7 @@
+## v3.6 - 22-06-26
+
+- Update Hosts
+
 ## v3.5 - 15-06-26
 
 - Update Hosts
