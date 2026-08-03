@@ -1,3 +1,7 @@
+## v3.12 - 03-08-26
+
+- Update Hosts
+
 ## v3.11 - 27-07-26
 
 - Update Hosts
