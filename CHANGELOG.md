@@ -1,3 +1,7 @@
+## v3.25 - 02-11-26
+
+- Update Hosts
+
 ## v3.24 - 26-10-26
 
 - Update Hosts
